@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
-# from final import OCRApp
 import final
 from tkinter import scrolledtext
 from tkinter import font
@@ -22,7 +21,7 @@ class ImageTextRecognizerApp:
         self.norm_font = font.Font(family="Lucida Handwriting", size=12)
         
         self.img_path = None
-        print(x)
+
         # Create and pack the select image button
         self.select_button = tk.Button(root, text="Select Image", command=self.select_image, font=self.norm_font)
         self.select_button.pack(pady=10)
@@ -74,23 +73,11 @@ class ImageTextRecognizerApp:
         ocr_tool=""
         if self.img_path:
             if self.x==1:
-                print("entered")
                 recognized_text,ocr_tool=final.main(self.img_path)
-            # Simulate text recognition (replace this with actual recognition logic)
-            print("enetred1")
-            print(recognized_text)
-            # recognized_text = "Recognized Text: (Simulated) Hello World"
             
             # Display recognized text
-            # self.text_label.config(text="Recognised Text :\n"+recognized_text)
             self.text_area.delete('1.0', tk.END)
             self.text_area.insert(tk.END,recognized_text)
             self.ocr_tool_label.config(text="OCR Tool : "+ocr_tool)
 
 
-# Create the main window
-# root = tk.Tk()
-# app = ImageTextRecognizerApp(root,1)
-
-# # Run the application
-# root.mainloop()

@@ -1,6 +1,5 @@
 import tkinter as tk
 import frontend2
-# from tkinter import PhotoImage
 from PIL import Image, ImageTk
 from tkinter import font
 
@@ -9,7 +8,6 @@ class MainApp:
         self.root = root
         self.root.title("Main Application")
         self.root.geometry("400x400")
-        # self.bg_image = tk.PhotoImage(file="C:/Users/Apoorva/OneDrive/Documents/Text Recognition/background-image.png")
         img = Image.open("background-image.jpg")
         self.bg_image = ImageTk.PhotoImage(img)
         # Create a Label widget to hold the background image

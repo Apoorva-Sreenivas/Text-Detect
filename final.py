@@ -63,19 +63,17 @@ class OCRApp:
 
     def perform_ocr(self):
         recognized_text=[]
-        print(f"Recommended OCR tool: {self.ocr_tool}")
-
+        
         if self.ocr_tool == "EasyOCR":
             reader = easyocr.Reader(['en'])  # Initialize EasyOCR with English language
             result = reader.readtext(self.image_path)
-            print("EasyOCR Result:")
+
             for (bbox,text, prob) in result:
                 if prob>0.3:
-                    print(text)
                     recognized_text.append(text)
-            # print(recognized_text)
+
             full_text = "\n".join(recognized_text)
-            # print(full_text)
+
         elif self.ocr_tool == "pytesseract":
             custom_config = r'--oem 3 --psm 6'  # Example custom configuration for pytesseract
             image = cv2.imread(self.image_path)
@@ -90,12 +88,9 @@ class OCRApp:
                 text = result['text'][i]
                 confidence = int(result['conf'][i]) if 'conf' in result else None
                 if confidence>50:
-                    print(f"Text: {text}, Confidence: {confidence}")
                     recognized_text.append(text)
             full_text = "\n".join(recognized_text)
-            # print("Full text",full_text)
         else:
-            # print("No suitable OCR tool selected.")
             self.ocr_tool="No suitable OCR tool selected"
 
         return full_text,self.ocr_tool
