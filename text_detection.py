@@ -83,7 +83,7 @@ class OCRApp:
             result = pytesseract.image_to_data(img_RGB, config=custom_config, output_type=pytesseract.Output.DICT)
 
             # Print OCR results with confidence scores
-            print("OCR Results:")
+            # print("OCR Results:")
             for i in range(len(result['text'])):
                 text = result['text'][i]
                 confidence = int(result['conf'][i]) if 'conf' in result else None
@@ -96,7 +96,7 @@ class OCRApp:
         return full_text,self.ocr_tool
     
 def main(image_path):
-    print("main enetred")
+    # print("main enetred")
     ocr_app = OCRApp(image_path) 
     recognised_text,ocr_tool = ocr_app.perform_ocr()
     return recognised_text,ocr_tool

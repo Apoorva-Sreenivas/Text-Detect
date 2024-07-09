@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk
-import final
+import text_detection
+import license_plates
+import handwriting
 from tkinter import scrolledtext
 from tkinter import font
 
@@ -73,11 +75,20 @@ class ImageTextRecognizerApp:
         ocr_tool=""
         if self.img_path:
             if self.x==1:
-                recognized_text,ocr_tool=final.main(self.img_path)
-            
+                recognized_text,ocr_tool=text_detection.main(self.img_path)
+            elif self.x==2:
+                recognized_text=handwriting.main(self.img_path)
+                ocr_tool = "neual network"
+            elif self.x==3:
+                recognized_text=license_plates.main(self.img_path)
+                ocr_tool="easy ocr"
+
             # Display recognized text
             self.text_area.delete('1.0', tk.END)
             self.text_area.insert(tk.END,recognized_text)
             self.ocr_tool_label.config(text="OCR Tool : "+ocr_tool)
+
+            
+
 
 
