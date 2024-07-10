@@ -125,9 +125,9 @@ class LicensePlateDetector:
 
         # Display the warped image
         if self.warped_image is not None:
-            plt.imshow(cv2.cvtColor(self.warped_image, cv2.COLOR_BGR2RGB))
-            plt.title("Warped Image")
-            plt.show()
+            # plt.imshow(cv2.cvtColor(self.warped_image, cv2.COLOR_BGR2RGB))
+            # plt.title("Warped Image")
+            # plt.show()
 
             recognised_text=self.annotate_image()
         else:

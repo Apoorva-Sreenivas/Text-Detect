@@ -51,7 +51,7 @@ class ImageTextRecognizerApp:
         self.text_area.pack(expand=True,padx=10)
         self.scrollbar.config(command=self.text_area.yview)
 
-        self.probability_label= tk.Label(root,text="Confidence Level : 0.5 ", font=self.norm_font)
+        self.probability_label= tk.Label(root,text="Confidence Level :", font=self.norm_font)
         self.probability_label.pack(padx=10)
 
        
@@ -76,13 +76,18 @@ class ImageTextRecognizerApp:
         if self.img_path:
             if self.x==1:
                 recognized_text,ocr_tool=text_detection.main(self.img_path)
+                if ocr_tool=="EasyOCR":
+                    self.probability_label.config(text="Confidence Level : 0.3")
+                else:
+                    self.probability_label.config(text="Confidence Level : 0.5")
             elif self.x==2:
                 recognized_text=handwriting.main(self.img_path)
                 ocr_tool = "neual network"
+                self.probability_label.config(text="Confidence Level : 0.65")
             elif self.x==3:
                 recognized_text=license_plates.main(self.img_path)
                 ocr_tool="easy ocr"
-
+                self.probability_label.config(text="Confidence Level : 0.5")
             # Display recognized text
             self.text_area.delete('1.0', tk.END)
             self.text_area.insert(tk.END,recognized_text)

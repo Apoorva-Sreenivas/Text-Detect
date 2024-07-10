@@ -134,7 +134,7 @@ class Handwriting_Recognition_System:
         return output_text
 
     def recognize_text_from_images(self, base_image_path):
-        t_images = self.prepare_test_images(base_image_path)
+        # t_images = self.prepare_test_images(base_image_path)
         inf_images = self.prepare_test_images(base_image_path)  # Changed to base_image_path
 
         pred_test_text = []
