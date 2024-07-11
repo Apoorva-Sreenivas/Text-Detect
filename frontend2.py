@@ -10,7 +10,12 @@ from tkinter import font
 class ImageTextRecognizerApp:
     def __init__(self, root,x):
         self.root = root
-        self.root.title("Image Selector and Text Recognizer")
+        if x ==1:
+            self.root.title("Text Recognition")
+        elif x==2:
+            self.root.title("Handwriting Recognition")
+        else:
+            self.root.title("License Plate Detection")
         self.root.geometry("600x650")
         self.x = x
 

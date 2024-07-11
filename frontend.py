@@ -6,7 +6,7 @@ from tkinter import font
 class MainApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Main Application")
+        self.root.title("Text Detect")
         self.root.geometry("400x400")
         img = Image.open("background-image.jpg")
         self.bg_image = ImageTk.PhotoImage(img)
